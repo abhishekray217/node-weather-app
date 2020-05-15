@@ -1,4 +1,5 @@
 const request = require("request");
+var os = require("os");
 
 
 const forecast = (latitude, longitude, callback) => { 
@@ -12,7 +13,11 @@ const forecast = (latitude, longitude, callback) => {
         }else if(body.message){
             callback("Unable to find location",undefined);
         }else{
-            callback(undefined, "It is currently " + (body.main.temp) + " degree celcius and will have" );
+            const stringToReturn = `It is currently ${(body.main.temp)} degree celcius.
+                                    The maximum temprature will be  ${body.main.temp_max}. 
+                                    The minimum temprature will be ${body.main.temp_min}. 
+                                    The wind speed will be ${body.wind.speed}.`;
+            callback(undefined, stringToReturn);
         }
     });
 
