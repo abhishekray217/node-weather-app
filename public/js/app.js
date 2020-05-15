@@ -19,7 +19,7 @@ weatherForm.addEventListener("submit",(event)=>{
     document.querySelector(".data-1").textContent = "";
     document.querySelector(".data-2").textContent = "";
 
-    fetch('http://localhost:3000/weather?address='+location).then((response) => {
+    fetch('/weather?address='+location).then((response) => {
         response.json().then((data) => {
             if (data.error) {
                 document.querySelector(".error").textContent = data.error;
